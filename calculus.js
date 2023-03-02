@@ -74,8 +74,22 @@ function gradientDescent(fn, n, dim) {
       return derivative(f,x)
     }
   }
+
+function eulersMethod(fn, x0, y0, h, n) {
+    let x = x0
+    let y = y0
+    let ret = []
+    for(var i = 0; i<n; i++) {
+      ret.push([x, y])
+      y += h * fn(x, y)
+      x += h
+    }
+    return ret
+  }
+
+function eulersMethodMVC(fn, x0, y0, h, n) {} // l8r
   
-  let exp = {gradientDescent, gradient, partial, derivative, differentiate}
+  let exp = {gradientDescent, gradient, partial, derivative, differentiate, eulersMethod}
   
   export default exp
-  export {gradientDescent, gradient, partial, derivative, differentiate}
+  export {gradientDescent, gradient, partial, derivative, differentiate, eulersMethod}
